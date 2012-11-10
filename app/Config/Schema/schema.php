@@ -12,6 +12,8 @@ class AppSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'phone_number' => array('type' => 'string', 'null' => true, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'active' => array('type' => 'boolean', 'null' => true, 'default' => null, 'key' => 'index'),
+		'start_time' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'end_time' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'phone_number' => array('column' => 'phone_number', 'unique' => 0),
@@ -34,6 +36,8 @@ class AppSchema extends CakeSchema {
 		'game_id' => array('type' => 'integer', 'null' => true, 'default' => null, 'key' => 'index'),
 		'type' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'data' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'start_time' => array('type' => 'datetime', 'null' => true, 'default' => null),
+		'end_time' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'game_id' => array('column' => 'game_id', 'unique' => 0)
@@ -43,6 +47,25 @@ class AppSchema extends CakeSchema {
 	public $scores = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'amount' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'round_id' => array('type' => 'integer', 'null' => true, 'default' => null),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
+	);
+	public $stats = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'key' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'value' => array('type' => 'float', 'null' => true, 'default' => null),
+		'indexes' => array(
+			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+		),
+		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
+	);
+	public $texts = array(
+		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
+		'body' => array('type' => 'text', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'user_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'round_id' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'indexes' => array(
@@ -63,6 +86,7 @@ class AppSchema extends CakeSchema {
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'primary'),
 		'phone_number' => array('type' => 'string', 'null' => true, 'default' => null, 'key' => 'index', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'nickname' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'area_code' => array('type' => 'integer', 'null' => true, 'default' => null),
 		'indexes' => array(
 			'PRIMARY' => array('column' => 'id', 'unique' => 1),
 			'phone_number' => array('column' => 'phone_number', 'unique' => 0)
